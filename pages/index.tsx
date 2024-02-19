@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PageTransition from '@/components/PageTransition';
 
 function Home() {
 
@@ -13,7 +14,7 @@ function Home() {
         <link rel="icon" href="/logos/logo-white.png" />
       </Head>
       <Navbar />
-
+      <PageTransition>
         {/* Sección 1: Hero */}
           <div className="relative h-screen">
             <img
@@ -176,6 +177,7 @@ function Home() {
           </div>
 
         <Footer />
+      </PageTransition>
     </>
   );
 }
