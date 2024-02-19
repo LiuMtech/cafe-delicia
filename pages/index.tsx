@@ -2,8 +2,16 @@ import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PageTransition from '@/components/PageTransition';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 function Home() {
+  const [section1Ref, inView1] = useInView({ triggerOnce: true });
+  const [section2Ref, inView2] = useInView({ triggerOnce: true });
+  const [section3Ref, inView3] = useInView({ triggerOnce: true });
+  const [section4Ref, inView4] = useInView({ triggerOnce: true });
+  const [section5Ref, inView5] = useInView({ triggerOnce: true });
+  const [section6Ref, inView6] = useInView({ triggerOnce: true });
 
   return (
     <>
@@ -14,8 +22,15 @@ function Home() {
         <link rel="icon" href="/logos/logo-white.png" />
       </Head>
       <Navbar />
+
       <PageTransition>
         {/* Sección 1: Hero */}
+        <motion.div
+          ref={section1Ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: inView1 ? 1 : 0, y: inView1 ? 0 : 50 }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="relative h-screen">
             <img
               src="/backgrounds/hero-background.jpg"
@@ -31,8 +46,15 @@ function Home() {
               </div>
             </div>
           </div>
+        </motion.div>
 
         {/* Sección 2: Café Delicia */}
+        <motion.div
+          ref={section2Ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: inView2 ? 1 : 0, y: inView2 ? 0 : 50 }}
+          transition={{ duration: .7 }}
+        >
           <div className="bg-customBeige text-white pt-52 pb-24">
             <div className="flex flex-wrap items-center justify-between">
               <div className="w-full md:w-1/2 px-20 flex justify-center">
@@ -59,8 +81,15 @@ function Home() {
               </div>
             </div>
           </div>
+        </motion.div>
 
         {/* Sección 3: Origen Local y Enfoque Histórico */}
+        <motion.div
+          ref={section3Ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: inView3 ? 1 : 0, y: inView3 ? 0 : 50 }}
+          transition={{ duration: .7 }}
+        >
           <div className="bg-customBeige text-white py-32">
             <div className="flex flex-wrap items-start justify-center gap-28">
               {/* Sección de Origen Local */}
@@ -104,8 +133,15 @@ function Home() {
               </div>
             </div>
           </div>
+        </motion.div>
 
         {/* Sección 4: Nuestros Servicios */}
+        <motion.div
+          ref={section4Ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: inView4 ? 1 : 0, y: inView4 ? 0 : 50 }}
+          transition={{ duration: .7 }}
+        >
           <h2 className="text-center text-3xl font-bold pb-8 bg-customBeige">Nuestros servicios</h2>
           <div className="flex justify-center items-center mx-auto bg-customBeige pb-20">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -129,8 +165,15 @@ function Home() {
               </div>
             </div>
           </div>
+        </motion.div>
 
         {/* Sección 5: Testimonial */}
+        <motion.div
+          ref={section5Ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: inView5 ? 1 : 0, y: inView5 ? 0 : 50 }}
+          transition={{ duration: .7 }}
+        >
           <div className="relative h-screen">
             <img
               src="/backgrounds/testimonial.jpg"
@@ -144,8 +187,15 @@ function Home() {
               </div>
             </div>
           </div>
+        </motion.div>
 
         {/* Sección 6: Contacto */}
+        <motion.div
+          ref={section6Ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: inView6 ? 1 : 0, y: inView6 ? 0 : 50 }}
+          transition={{ duration: .7 }}
+        >
           <div className="bg-customBeige text-black py-32">
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
               <div className="w-full md:w-1/2 px-6 md:px-0 flex justify-center mb-8 md:mb-0">
@@ -175,6 +225,7 @@ function Home() {
               </div>
             </div>
           </div>
+        </motion.div>
 
         <Footer />
       </PageTransition>
